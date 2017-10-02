@@ -1,3 +1,6 @@
+TAG = 1.0.0-0
+PREFIX = bismarck
+
 all: image
 
 code:
@@ -11,7 +14,7 @@ build-in-docker: builder-image
 	docker run -it -v `pwd`:/src builder /onbuild.sh
 
 image: build-in-docker
-	docker build -t kope/aws-es-proxy  -f images/aws-es-proxy/Dockerfile .
+	docker build -t $(PREFIX)/aws-es-proxy:$(TAG)  -f images/aws-es-proxy/Dockerfile .
 
 push: image
-	docker push kope/aws-es-proxy:latest
+	docker push $(PREFIX)/aws-es-proxy:$(TAG)
