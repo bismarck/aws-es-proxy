@@ -46,10 +46,16 @@ func (p *SigningRoundTripper) RoundTrip(req *http.Request) (*http.Response, erro
 		if lk == "x-forwarded-host" {
 			delete(req.Header, k)
 		}
+		if lk == "x-forwarded-port" {
+			delete(req.Header, k)
+		}
 		if lk == "x-forwarded-for" {
 			delete(req.Header, k)
 		}
 		if lk == "x-forwarded-proto" {
+			delete(req.Header, k)
+		}
+		if lk == "x-forwarded-uri" {
 			delete(req.Header, k)
 		}
 		if lk == "x-forward-for" {
